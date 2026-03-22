@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon.in — Smart Watch Results | Case Study</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+ 
+<!-- ═══════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="logo">amazon<span>.in</span></div>
+ 
+  <div class="deliver">
+    <div class="d1">📍 Deliver to</div>
+    <div class="d2">India</div>
+  </div>
+ 
+  <div class="sbox">
+    <select class="scat">
+      <option>All</option>
+      <option selected>Electronics</option>
+      <option>Clothing</option>
+      <option>Home</option>
+      <option>Sports</option>
+      <option>Books</option>
+    </select>
+    <input class="sinp" type="text" value="smart watch"/>
+    <button class="sbtn">
+      <svg viewBox="0 0 24 24">
+        <path d="M21.71 20.29l-3.39-3.39A9 9 0 103 12a9 9 0 0014.9 6.32l3.39 3.39a1 1 0 001.42-1.42zM5 12a7 7 0 117 7 7 7 0 01-7-7z"/>
+      </svg>
+    </button>
+  </div>
+ 
+  <div class="flag-btn">🇺🇸 EN ▾</div>
+ 
+  <div class="nav-r">
+    <div class="nitem">Hello, sign in<strong>Account &amp; Lists ▾</strong></div>
+    <div class="nitem">Returns<strong>&amp; Orders</strong></div>
+    <div class="nitem cart-wrap">
+      <svg width="26" height="26" fill="none" viewBox="0 0 24 24">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#fff" stroke-width="1.5"/>
+        <line x1="3" y1="6" x2="21" y2="6" stroke="#fff" stroke-width="1.5"/>
+        <path d="M16 10a4 4 0 01-8 0" stroke="#fff" stroke-width="1.5"/>
+      </svg>
+      <span class="cart-n">0</span>
+      <strong class="cart-label">Cart</strong>
+    </div>
+  </div>
+</nav>
+ 
+<!-- ═══ SECONDARY NAVBAR ═══ -->
+<div class="subbar">
+  <div class="subl bold-all">☰ All</div>
+  <div class="subl">Today's Deals</div>
+  <div class="subl">Gift Cards</div>
+  <div class="subl">Sell</div>
+  <div class="subl">Registry</div>
+  <div class="subl">Prime Video</div>
+  <div class="subl">Customer Service</div>
+  <div class="subl">Electronics</div>
+  <div class="subl">Mobiles</div>
+</div>
+ 
+<!-- ═══ RESULT COUNT BAR ═══ -->
+<div class="rbar">
+  <div id="rbarText">
+    1–16 of over <em>40,000</em> results for <em>"smart watch"</em>
+  </div>
+  <div class="sort-r">
+    <label>Sort by:</label>
+    <select class="sort-sel" id="sortSel" onchange="setSort(this.value)">
+      <option value="featured">Featured</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Avg. Customer Review</option>
+      <option value="newest">Newest Arrivals</option>
+    </select>
+  </div>
+</div>
+ 
+<!-- ═══════════════════════════════════════
+     PAGE BODY (sidebar + results)
+═══════════════════════════════════════ -->
+<div class="page">
+ 
+  <!-- ─── SIDEBAR ─────────────────────── -->
+  <aside class="sb">
+ 
+    <!-- Popular Shopping Ideas -->
+    <div class="sb-sec">
+      <div class="sb-t">Popular Shopping Ideas</div>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Android</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Ios</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Round Face</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Gps</span></label>
+      <div class="see-more">▾ See more</div>
+    </div>
+ 
+    <!-- Customer Reviews -->
+    <div class="sb-sec">
+      <div class="sb-t">Customer Reviews</div>
+      <div class="star-row" onclick="setRating(4, this)">
+        <span class="sf">★★★★</span><span class="se">★</span>
+        <span class="sup">&amp; Up</span>
+      </div>
+      <div class="star-row" onclick="setRating(3, this)">
+        <span class="sf">★★★</span><span class="se">★★</span>
+        <span class="sup">&amp; Up</span>
+      </div>
+      <div class="star-row" onclick="setRating(2, this)">
+        <span class="sf">★★</span><span class="se">★★★</span>
+        <span class="sup">&amp; Up</span>
+      </div>
+      <div class="star-row" onclick="setRating(1, this)">
+        <span class="sf">★</span><span class="se">★★★★</span>
+        <span class="sup">&amp; Up</span>
+      </div>
+    </div>
+ 
+    <!-- Brands -->
+    <div class="sb-sec">
+      <div class="sb-t">Brands</div>
+      <label class="fopt"><input type="checkbox" data-brand="Samsung"  onchange="applyFilters()"/> <span>Samsung</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="Apple"    onchange="applyFilters()"/> <span>Apple</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="Garmin"   onchange="applyFilters()"/> <span>Garmin</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="Fitbit"   onchange="applyFilters()"/> <span>Fitbit</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="Amazfit"  onchange="applyFilters()"/> <span>Amazfit</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="Noise"    onchange="applyFilters()"/> <span>Noise</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="boAt"     onchange="applyFilters()"/> <span>boAt</span></label>
+      <label class="fopt"><input type="checkbox" data-brand="Motorola" onchange="applyFilters()"/> <span>Motorola</span></label>
+      <div class="see-more">▾ See more</div>
+    </div>
+ 
+    <!-- Amazon Sports -->
+    <div class="sb-sec">
+      <div class="sb-t">Amazon Sports</div>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Premium Brands</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Top Brands</span></label>
+    </div>
+ 
+    <!-- Special Features -->
+    <div class="sb-sec">
+      <div class="sb-t">Special Features</div>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Activity Tracker</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Alarm Clock</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Touchscreen</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Camera</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>GPS</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Time Display</span></label>
+      <label class="fopt"><input type="checkbox" onchange="applyFilters()"/> <span>Accelerometer</span></label>
+      <div class="see-more">▾ See more</div>
+    </div>
+ 
+    <!-- Deals & Discounts -->
+    <div class="sb-sec">
+      <div class="sb-t">Deals &amp; Discounts</div>
+      <label class="fopt"><input type="radio" name="disc" value="10"  onchange="applyFilters()"/> <span>10% off or more</span></label>
+      <label class="fopt"><input type="radio" name="disc" value="25"  onchange="applyFilters()"/> <span>25% off or more</span></label>
+      <label class="fopt"><input type="radio" name="disc" value="50"  onchange="applyFilters()"/> <span>50% off or more</span></label>
+      <label class="fopt"><input type="radio" name="disc" value="70"  onchange="applyFilters()"/> <span>70% off or more</span></label>
+    </div>
+ 
+    <!-- Price -->
+    <div class="sb-sec">
+      <div class="sb-t">Price</div>
+      <label class="fopt"><input type="radio" name="price" value="0-1000"    onchange="applyFilters()"/> <span>Under ₹1,000</span></label>
+      <label class="fopt"><input type="radio" name="price" value="1000-5000" onchange="applyFilters()"/> <span>₹1,000 – ₹5,000</span></label>
+      <label class="fopt"><input type="radio" name="price" value="5000-20000" onchange="applyFilters()"/> <span>₹5,000 – ₹20,000</span></label>
+      <label class="fopt"><input type="radio" name="price" value="20000-99999" onchange="applyFilters()"/> <span>Over ₹20,000</span></label>
+      <div class="pinps">
+        <input class="pinp" type="number" id="pMin" placeholder="Min"/>
+        <span>–</span>
+        <input class="pinp" type="number" id="pMax" placeholder="Max"/>
+        <button class="pgo" onclick="applyCustomPrice()">Go</button>
+      </div>
+    </div>
+ 
+    <!-- Availability -->
+    <div class="sb-sec">
+      <div class="sb-t">Availability</div>
+      <label class="fopt"><input type="checkbox" data-special="prime"   onchange="applyFilters()"/> <span>🔵 Prime Eligible</span></label>
+      <label class="fopt"><input type="checkbox" data-special="instock" onchange="applyFilters()"/> <span>Include Out of Stock</span></label>
+    </div>
+ 
+    <button class="clr-btn" onclick="clearAll()">✕ Clear All Filters</button>
+  </aside>
+ 
+  <!-- ─── MAIN RESULTS ────────────────── -->
+  <div class="main">
+ 
+    <div class="res-hd">
+      <div class="res-title">Results</div>
+      <div class="res-note">Check each product page for other buying options.</div>
+    </div>
+ 
+    <!-- Active filter chips -->
+    <div class="chips-bar" id="chipsBar"></div>
+ 
+    <!-- Product list injected by JS -->
+    <div class="plist" id="plist"></div>
+ 
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyEl" style="display:none;">
+      <h3>🔍 No results match your filters</h3>
+      <p>Try adjusting or
+        <button onclick="clearAll()" class="clear-link">clearing all filters</button>
+      </p>
+    </div>
+ 
+    <!-- Pagination -->
+    <div class="paging">
+      <span class="pg arr">←</span>
+      <span class="pg active">1</span>
+      <span class="pg">2</span>
+      <span class="pg">3</span>
+      <span class="pg">4</span>
+      <span class="pg">5</span>
+      <span class="pg">...</span>
+      <span class="pg">20</span>
+      <span class="pg arr">→</span>
+    </div>
+  </div>
+</div>
+ 
+<!-- Link JS at bottom of body -->
+<script src="script.js"></script>
+ 
+</body>
+</htm
